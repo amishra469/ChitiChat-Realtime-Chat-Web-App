@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
-import { Avatar, Badge, Box, Divider, IconButton, Stack, Typography, styled } from '@mui/material'
-import { CaretDown, MagnifyingGlass, Phone, VideoCamera } from 'phosphor-react';
+import { Avatar, Badge, Box, Divider, IconButton, InputAdornment, Stack, TextField, Typography, styled, useTheme } from '@mui/material'
+import { CaretDown, LinkSimple, MagnifyingGlass, PaperPlaneTilt, Phone, Smiley, VideoCamera } from 'phosphor-react';
 import React from 'react'
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -32,10 +32,18 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
+const StyledInput = styled(TextField)(({ theme }) => ({
+    "& .MuiInputBase-input": {
+        paddingTop: "12px",
+        paddingBottom: "12px",
+    }
+}));
+
 const Conversation = () => {
+    const theme = useTheme();
     return (
         <Stack height={"100%"} maxHeight={"100vh"} width={"auto"}>
-            <Box p={2} sx={{ height: 80, width: "100%", backgroundColor: "#F8FAFF", boxShadow: "0px 0px 2px, rgba(0, 0, 0, 0.25" }}>
+            <Box p={2} sx={{ width: "100%", backgroundColor: theme.palette.mode === 'light' ? "#F8FAFF" : theme.palette.background.paper, boxShadow: "0px 0px 2px, rgba(0, 0, 0, 0.25" }}>
                 <Stack alignItems='center' direction='row' justifyContent='space-between' sx={{ width: "100%", height: "100%" }}>
                     <Stack direction='row' spacing={2}>
                         <Box>
@@ -72,7 +80,33 @@ const Conversation = () => {
 
             </Box>
 
-            <Box sx={{ height: 80, width: "100%", backgroundColor: "#F8FAFF", boxShadow: "0px 0px 2px, rgba(0, 0, 0, 0.25" }}>
+            <Box p={2} sx={{ width: "100%", backgroundColor: theme.palette.mode === 'light' ? "#F8FAFF" : theme.palette.background.paper, boxShadow: "0px 0px 2px, rgba(0, 0, 0, 0.25" }}>
+                <Stack direction='row' alignItems='center' spacing={3}>
+                    <StyledInput fullWidth placeholder='Write a message...' variant='filled' InputProps={
+                        {
+                            disableUnderline: true,
+                            startAdornment:
+                                <InputAdornment>
+                                    <IconButton>
+                                        <LinkSimple />
+                                    </IconButton>
+                                </InputAdornment>,
+                            endAdornment:
+                                <InputAdornment>
+                                    <IconButton>
+                                        <Smiley />
+                                    </IconButton>
+                                </InputAdornment>
+                        }}
+                    />
+                    <Box sx={{ height: 46, width: 46, backgroundColor: theme.palette.primary.main, borderRadius: 1.5 }}>
+                        <Stack sx={{height: "100%", width: "100%"}} alignItems='center' justifyContent='center'>
+                            <IconButton>
+                                <PaperPlaneTilt color='#fff'/>
+                            </IconButton>
+                        </Stack>
+                    </Box>
+                </Stack>
 
             </Box>
 
