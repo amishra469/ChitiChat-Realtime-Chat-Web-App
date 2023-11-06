@@ -77,6 +77,9 @@ const Conversation = () => {
             </Box>
 
             <Box width={"100%"} sx={{ flexGrow: 1 }}>
+               <Box>
+                
+               </Box>
 
             </Box>
 
