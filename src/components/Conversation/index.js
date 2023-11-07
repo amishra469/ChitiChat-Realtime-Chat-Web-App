@@ -2,6 +2,7 @@ import React from 'react'
 import Header from './Header';
 import Footer from './Footer';
 import { Box, Stack } from '@mui/material';
+import Message from './Message';
 
 const Conversation = () => {
     return (
@@ -9,6 +10,7 @@ const Conversation = () => {
             <Header />
 
             <Box width={"100%"} sx={{ flexGrow: 1 }}>
+                <Message />
             </Box>
 
             <Footer />
