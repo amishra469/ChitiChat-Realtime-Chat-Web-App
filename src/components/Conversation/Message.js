@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mui/material'
 import React from 'react'
 import { Chat_History } from "../../data"
-import { Timeline } from './MsgType'
+import { MediaMsg, TextMsg, Timeline } from './MsgType'
 
 const Message = () => {
     return (
@@ -15,8 +15,7 @@ const Message = () => {
                             case "msg":
                                 switch (el.subtype) {
                                     case 'img':
-                                        // img msg
-                                        break;
+                                        return <MediaMsg el={el} />
                                     case 'doc':
                                         // img msg
                                         break;
@@ -27,7 +26,7 @@ const Message = () => {
                                         // img msg
                                         break;
                                     default:
-                                        break;
+                                        return <TextMsg el={el} />
                                 }
                                 break;
                             default:
